@@ -1,0 +1,55 @@
+<div class="mycontainer">
+  <form ngForm #formStatus="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <!-- we use the ngmodel to track the field with angular (should be required) -->
+        <label>User name </label>
+        <input
+          ngModel
+          #username
+          #refUserName="ngModel"
+          name="user"
+          type="text"
+          class="form-control"
+          required
+        />
+        <br />
+        <span
+          *ngIf="refUserName.touched && refUserName.invalid"
+          class="alert alert-danger"
+          >user name is required</span
+        >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label>Password</label>
+        <input
+          ngModel
+          #refPass="ngModel"
+          required
+          #pass
+          type="text"
+          name="password"
+          class="form-control"
+        />
+        <br />
+        <span
+          *ngIf="refPass.touched && refPass.invalid"
+          class="alert alert-danger"
+          >password is required</span
+        >
+      </div>
+    </div>
+
+    <div class="form-row">
+      <button
+        class="btn btn-primary"
+        [disabled]="formStatus.invalid"
+        (click)="login(username.value, pass.value)"
+      >
+        LogIn
+      </button>
+    </div>
+  </form>
+</div>

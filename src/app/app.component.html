@@ -1,0 +1,18 @@
+<!-- top nav bar -->
+<div class="top-bar">
+  <h3>Company CRM</h3>
+  <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-success">
+    LogOut
+  </button>
+</div>
+
+<!-- side nav bar -->
+<div class="sidenav">
+  <a routerLink="customers">Customers</a>
+  <a routerLink="contacts">Contacts</a>
+</div>
+
+<!-- main display -->
+<div class="main">
+  <router-outlet> </router-outlet>
+</div>

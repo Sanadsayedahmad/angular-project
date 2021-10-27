@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Conatcts</h3>
+  </div>
+  <div class="panel-body">
+    <!-- adding search field  for the filter and storing the text in searchName variable -->
+    <input
+      [(ngModel)]="searchName"
+      class="input-filter"
+      type="text"
+      placeholder="Search Name"
+    />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Birthday</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts; let num = index">
+          <!-- cheking if the user is relevant for the search and display -->
+          <ng-container *ngIf="!filterContact(contact)">
+            <th scope="row">
+              {{ num + 1 }}
+            </th>
+            <td>
+              <span class="glyphicon glyphicon glyphicon-user"> </span>
+              {{ contact.name }}
+            </td>
+            <td>{{ contact.birthday }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.email }}</td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
